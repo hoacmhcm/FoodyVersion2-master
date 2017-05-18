@@ -16,6 +16,7 @@ public class LoadMore extends RecyclerView.OnScrollListener {
     private int firstVisibleItem;
     private int countItem;
     private int visibleThreshold;
+    private int preCountItem=0;
 
     public static boolean isLoadding = true;
 
@@ -36,6 +37,7 @@ public class LoadMore extends RecyclerView.OnScrollListener {
         super.onScrolled(recyclerView, dx, dy);
         //đếm số item hiện có
         countItem = layoutManager.getItemCount();
+
 //        Log.e("COUNTITEM111111111111", String.valueOf(countItem));
         if (layoutManager instanceof LinearLayoutManager) {
             firstVisibleItem = ((LinearLayoutManager) layoutManager).findFirstVisibleItemPosition();
@@ -43,12 +45,12 @@ public class LoadMore extends RecyclerView.OnScrollListener {
             firstVisibleItem = ((GridLayoutManager) layoutManager).findLastVisibleItemPosition();
         }
         // nếu số item hiện có vẫn còn bé hơn số item load lên thì chưa load thêm
-        if (countItem <= (firstVisibleItem+ visibleThreshold)) {
+        if (preCountItem != countItem && countItem <= (firstVisibleItem+ visibleThreshold)) {
+            preCountItem = countItem;
             Log.e("COUNTITEM", String.valueOf(countItem));
             Log.e("firstVisibleItem", String.valueOf(firstVisibleItem));
             Log.e("visibleThreshold", String.valueOf(visibleThreshold));
             iLoadMore.loadMore(countItem);
-//            countItem += +10;
         }
     }
 

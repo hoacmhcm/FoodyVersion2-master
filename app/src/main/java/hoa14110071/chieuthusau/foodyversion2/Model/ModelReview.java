@@ -33,28 +33,27 @@ import static hoa14110071.chieuthusau.foodyversion2.Database.DatabaseString.REVI
 
 public class ModelReview{
 
-//    public ArrayList<Review> get_ReviewByItemID(SQLiteDatabase database, int ItemID) {
-//        ArrayList<Review> reviews = new ArrayList<>();
-//        String query = "select * from " + REVIEW + " where " + REVIEW_ITEMID + " =" + ItemID + "";
-//        Cursor cursor = database.rawQuery(query, null);
-//        cursor.moveToFirst();
-//        while (!cursor.isAfterLast()) {
-//            Review review = new Review();
-//            review.setId(cursor.getInt(cursor.getColumnIndex(REVIEW_ID)));
-//            review.setName(cursor.getString(cursor.getColumnIndex(REVIEW_NAME)));
-//            review.setImage(cursor.getString(cursor.getColumnIndex(REVIEW_AVATAR)));
-//            review.setComment(cursor.getString(cursor.getColumnIndex(REVIEW_COMMENT)));
-//            review.setCommentTrim(cursor.getString(cursor.getColumnIndex(REVIEW_COMMENTTRIM)));
-//            review.setItemId(cursor.getInt(cursor.getColumnIndex(REVIEW_ITEMID)));
-//            review.setRating(cursor.getDouble(cursor.getColumnIndex(REVIEW_RATING)));
-//            review.setItemId(cursor.getInt(cursor.getColumnIndex(REVIEW_ITEMID)));
-//            review.setReivewUrl(cursor.getString(cursor.getColumnIndex(REVIEW_REVIEWURL)));
-//            reviews.add(review);
-//            cursor.moveToNext();
-//        }
-//        cursor.close();
-//        return reviews;
-//    }
+    public List<Review> get_ReviewByItemID(SQLiteDatabase database, int ItemID) {
+        ArrayList<Review> reviews = new ArrayList<>();
+        String query = "select * from " + REVIEW + " where " + REVIEW_ITEMID + " =" + ItemID + "";
+        Cursor cursor = database.rawQuery(query, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Review review = new Review();
+            review.setId(cursor.getInt(cursor.getColumnIndex(REVIEW_ID)));
+            review.setName(cursor.getString(cursor.getColumnIndex(REVIEW_NAME)));
+            review.setImage(cursor.getString(cursor.getColumnIndex(REVIEW_AVATAR)));
+            review.setComment(cursor.getString(cursor.getColumnIndex(REVIEW_COMMENT)));
+            review.setCommentTrim(cursor.getString(cursor.getColumnIndex(REVIEW_COMMENTTRIM)));
+            review.setItemId(cursor.getInt(cursor.getColumnIndex(REVIEW_ITEMID)));
+            review.setRating(cursor.getDouble(cursor.getColumnIndex(REVIEW_RATING)));
+            review.setItemId(cursor.getInt(cursor.getColumnIndex(REVIEW_ITEMID)));
+            reviews.add(review);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return reviews;
+    }
 
 //    public void get_ReviewByItemID(int ItemId)
 //    {
@@ -67,8 +66,18 @@ public class ModelReview{
 //        final List<Review> reviews = new ArrayList<>();
 //        Call<List<Review>> call2 = services.getReviewByItemId(ItemID);
 //        Log.e("ReviewURL",call2.request().url().toString());
-//        call2.enqueue(ModelReview.this);
-////        return reviews;
+//        call2.enqueue(new Callback<List<Review>>() {
+//            @Override
+//            public void onResponse(Call<List<Review>> call, Response<List<Review>> response) {
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Review>> call, Throwable t) {
+//
+//            }
+//        });
+//        return reviews;
 //    }
 //
 //

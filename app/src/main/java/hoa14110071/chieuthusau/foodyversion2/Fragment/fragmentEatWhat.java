@@ -235,24 +235,25 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
         }
         tabWidget.getChildAt(tabHost.getCurrentTab()).setBackgroundResource(R.drawable.background_tabhost_selected);
     }
+
     //Load thêm dữ liệu
     @Override
     public void loadMore(int countItem) {
         List<Item> items;
         if (tabTPHCMQuery) {
-            items = itemController.get_Item_ByCategoryandListAndDistrictLoadMore(CategoryIdEatWhat, ListIdEatWhat, DistrictIdEatWhat, countItem, frame_progress);
+            itemController.get_Item_ByCategoryandListAndDistrictLoadMore(CategoryIdEatWhat, ListIdEatWhat, DistrictIdEatWhat, countItem, frame_progress);
         } else if (tabStreetQuery) {
-            items = itemController.get_Item_ByCategoryandListAndStreetLoadMore(CategoryIdEatWhat, ListIdEatWhat, StreetIdEatWhat, countItem, frame_progress);
+            itemController.get_Item_ByCategoryandListAndStreetLoadMore(CategoryIdEatWhat, ListIdEatWhat, StreetIdEatWhat, countItem, frame_progress);
         } else {
-            items = itemController.get_Item_ByCategoryandListAndCityLoadMore(CategoryIdEatWhat, ListIdEatWhat, CityIdEatWhat, countItem, frame_progress);
+            itemController.get_Item_ByCategoryandListAndCityLoadMore(CategoryIdEatWhat, ListIdEatWhat, CityIdEatWhat, countItem, frame_progress);
         }
-        itemsEatWhat.addAll(items);
-        itemEatWhatAdapter.notifyDataSetChanged();
+
     }
 
     @Override
     public void loadMoreResultItem(List<Item> items) {
-
+        itemsEatWhat.addAll(items);
+        itemEatWhatAdapter.notifyDataSetChanged();
     }
 
     //Load category lên tabMoiNhat
@@ -292,6 +293,7 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
         tabStreetQuery = false;
         loadNew(context);
     }
+
     //Chọn vào đường
     public static void setOnChildEatWhat(Context context, int groupPosition, int childPosition) {
         final TextView tvTPHCM = (TextView) tabWidget.getChildTabViewAt(2).findViewById(android.R.id.title);
@@ -327,6 +329,7 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
             }
         });
     }
+
     //LoadQuanHuyen lên tab Thành phố
     @Override
     public void loadDistrict(ArrayList<District> districts) {
@@ -339,6 +342,7 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
         customAdapterExpandableListview = new CustomAdapterExpandableListview(getContext(), districts, mData, 1);
         exLstEatWhat.setAdapter(customAdapterExpandableListview);
     }
+
     //hàm show item
     public void showItem(List<Item> items) {
         itemsEatWhat = items;
@@ -362,13 +366,13 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
             call.enqueue(new Callback<List<Review>>() {
                 @Override
                 public void onResponse(Call<List<Review>> call, Response<List<Review>> response) {
-                    if(response.isSuccessful())
-                    {
+                    if (response.isSuccessful()) {
                         List<Review> list = response.body();
                         for (int i = 0; i < list.size(); i++)
                             reviews.add(list.get(i));
                     }
                 }
+
                 @Override
                 public void onFailure(Call<List<Review>> call, Throwable t) {
 
@@ -421,6 +425,7 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
         }
 
     }
+
     //Chọn vào thành phố mới sẽ load lại tỉnh
     public static void changeCityEatWhat(Context context, int CityID, String CityName) {
         districtController.get_District(CityID);

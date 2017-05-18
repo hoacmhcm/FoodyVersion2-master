@@ -16,8 +16,8 @@ public interface iItemController {
     void get_Item_ByCategoryandListAndDistrict(int CategoryId, int ListID, int DistrictID, int limitFromIndex);
     void get_Item_ByCategoryandListAndStreet(int CategoryId, int ListID, int StreetID, int limitFromIndex);
 
-    List<Item> get_Item_ByCategoryandListAndCityLoadMore(int CategoryId, int ListID, int CityId, int limitFromIndex, FrameLayout frameProgress);
-    List<Item> get_Item_ByCategoryandListAndDistrictLoadMore(int CategoryId, int ListID, int DistrictID, int limitFromIndex, FrameLayout frameProgress);
-    List<Item> get_Item_ByCategoryandListAndStreetLoadMore(int CategoryId, int ListID, int StreetID, int limitFromIndex, FrameLayout frameProgress);
+    void get_Item_ByCategoryandListAndCityLoadMore(int CategoryId, int ListID, int CityId, int limitFromIndex, FrameLayout frameProgress);
+    void get_Item_ByCategoryandListAndDistrictLoadMore(int CategoryId, int ListID, int DistrictID, int limitFromIndex, FrameLayout frameProgress);
+    void get_Item_ByCategoryandListAndStreetLoadMore(int CategoryId, int ListID, int StreetID, int limitFromIndex, FrameLayout frameProgress);
 
 }

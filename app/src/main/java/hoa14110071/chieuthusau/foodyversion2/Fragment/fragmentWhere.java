@@ -37,23 +37,12 @@ import hoa14110071.chieuthusau.foodyversion2.Controller.ListByTypeController.Lis
 import hoa14110071.chieuthusau.foodyversion2.JavaClass.LoadMore;
 import hoa14110071.chieuthusau.foodyversion2.JavaClass.iLoadData;
 import hoa14110071.chieuthusau.foodyversion2.JavaClass.iLoadMore;
-import hoa14110071.chieuthusau.foodyversion2.Model.ModelReview;
 import hoa14110071.chieuthusau.foodyversion2.Object.Category;
 import hoa14110071.chieuthusau.foodyversion2.Object.District;
 import hoa14110071.chieuthusau.foodyversion2.Object.Item;
 import hoa14110071.chieuthusau.foodyversion2.Object.ListByType;
-import hoa14110071.chieuthusau.foodyversion2.Object.Review;
 import hoa14110071.chieuthusau.foodyversion2.Object.Street;
 import hoa14110071.chieuthusau.foodyversion2.R;
-import hoa14110071.chieuthusau.foodyversion2.Services.RetrofitCreate;
-import hoa14110071.chieuthusau.foodyversion2.Services.Services;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import static hoa14110071.chieuthusau.foodyversion2.Activity.HomeActivity.database;
-import static hoa14110071.chieuthusau.foodyversion2.Activity.HomeActivity.services;
-import static hoa14110071.chieuthusau.foodyversion2.JavaClass.LoadMore.isLoadding;
 
 
 public class fragmentWhere extends Fragment implements TabHost.OnTabChangeListener, View.OnClickListener, iLoadData, iLoadMore {
@@ -119,7 +108,6 @@ public class fragmentWhere extends Fragment implements TabHost.OnTabChangeListen
     static boolean isError = false;
 
     static boolean isLoadMore = false;
-
 
 
     @Override
@@ -297,23 +285,21 @@ public class fragmentWhere extends Fragment implements TabHost.OnTabChangeListen
     @Override
     public void loadMore(int countItem) {
         List<Item> items;
-        isLoadMore= true;
+        isLoadMore = true;
         if (tabTPHCMQuery) {
-            items = itemController.get_Item_ByCategoryandListAndDistrictLoadMore(CategoryIdWhere, ListIdWhere, DistrictId, countItem, frame_progress);
+            itemController.get_Item_ByCategoryandListAndDistrictLoadMore(CategoryIdWhere, ListIdWhere, DistrictId, countItem, frame_progress);
         } else if (tabStreetQuery) {
-            items = itemController.get_Item_ByCategoryandListAndStreetLoadMore(CategoryIdWhere, ListIdWhere, StreetID, countItem, frame_progress);
+            itemController.get_Item_ByCategoryandListAndStreetLoadMore(CategoryIdWhere, ListIdWhere, StreetID, countItem, frame_progress);
         } else {
-            items = itemController.get_Item_ByCategoryandListAndCityLoadMore(CategoryIdWhere, ListIdWhere, CityId, countItem, frame_progress);
+            itemController.get_Item_ByCategoryandListAndCityLoadMore(CategoryIdWhere, ListIdWhere, CityId, countItem, frame_progress);
         }
-        itemsWhere.addAll(items);
-        itemWhereAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void loadMoreResultItem(List<Item> items) {
-//        itemsWhere.addAll(items);
-//        Log.e("Log",itemsWhere.get(itemsWhere.size()-1).getName());
-//        itemWhereAdapter.notifyDataSetChanged();
+    public void loadMoreResultItem(final List<Item> items) {
+        itemsWhere.addAll(items);
+        Log.e("Log", itemsWhere.get(itemsWhere.size() - 1).getName());
+        itemWhereAdapter.notifyDataSetChanged();
     }
 
     //Load category lên tabMoiNhat
@@ -397,14 +383,7 @@ public class fragmentWhere extends Fragment implements TabHost.OnTabChangeListen
 
     @Override
     public void loadItemByCategoryandListAndCity(List<Item> items) {
-//        if (isLoadMore) {
-//            itemsWhere.addAll(items);
-//            itemWhereAdapter.notifyDataSetChanged();
-//
-//            showItem(itemsWhere);
-//        } else {
-            showItem(items);
-//        }
+        showItem(items);
     }
 
     @Override
@@ -420,44 +399,44 @@ public class fragmentWhere extends Fragment implements TabHost.OnTabChangeListen
 
     //hàm load dữ liệu mới lên
     private static void loadNew(Context context) {
-        isLoadMore=false;
+        isLoadMore = false;
         if (tabTPHCMQuery) {
-            if(itemWhereAdapter.getItemCount()!=0)
-            {
+            if (itemWhereAdapter.getItemCount() != 0) {
                 itemWhereAdapter.clearData();
                 itemWhereAdapter.notifyDataSetChanged();
             }
             recycler_list_items.removeOnScrollListener(loadMore);
             itemController.get_Item_ByCategoryandListAndDistrict(CategoryIdWhere, ListIdWhere, DistrictId, 0);
         } else if (tabStreetQuery) {
-            if(itemWhereAdapter.getItemCount()!=0)
-            {
+            if (itemWhereAdapter.getItemCount() != 0) {
                 itemWhereAdapter.clearData();
                 itemWhereAdapter.notifyDataSetChanged();
             }
             recycler_list_items.removeOnScrollListener(loadMore);
             itemController.get_Item_ByCategoryandListAndStreet(CategoryIdWhere, ListIdWhere, StreetID, 0);
         } else {
-            if(itemWhereAdapter.getItemCount()!=0)
-            {
+            if (itemWhereAdapter.getItemCount() != 0) {
                 itemWhereAdapter.clearData();
                 itemWhereAdapter.notifyDataSetChanged();
             }
             recycler_list_items.removeOnScrollListener(loadMore);
             itemController.get_Item_ByCategoryandListAndCity(CategoryIdWhere, ListIdWhere, CityId, 0);
         }
-        if (isError) {
-            tabHost.setCurrentTab(4);
-            isError = false;
-        } else {
-            tabHost.setCurrentTab(3);
-        }
+//        if (isError) {
+//            tabHost.setCurrentTab(4);
+//            isError = false;
+//        } else {
+        tabHost.setCurrentTab(3);
+//        }
 
     }
 
     @Override
     public void error() {
-        isError = true;
+        if(itemsWhere.isEmpty())
+        {
+            tabHost.setCurrentTab(4);
+        }
     }
 }
 
