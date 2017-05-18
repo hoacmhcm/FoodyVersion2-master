@@ -38,17 +38,8 @@ import hoa14110071.chieuthusau.foodyversion2.Object.Category;
 import hoa14110071.chieuthusau.foodyversion2.Object.District;
 import hoa14110071.chieuthusau.foodyversion2.Object.Item;
 import hoa14110071.chieuthusau.foodyversion2.Object.ListByType;
-import hoa14110071.chieuthusau.foodyversion2.Object.Review;
 import hoa14110071.chieuthusau.foodyversion2.Object.Street;
 import hoa14110071.chieuthusau.foodyversion2.R;
-import hoa14110071.chieuthusau.foodyversion2.Services.RetrofitCreate;
-import hoa14110071.chieuthusau.foodyversion2.Services.Services;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import static hoa14110071.chieuthusau.foodyversion2.Activity.HomeActivity.database;
-import static hoa14110071.chieuthusau.foodyversion2.Activity.HomeActivity.services;
 
 
 public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeListener, View.OnClickListener, iLoadData, iLoadMore {
@@ -79,7 +70,7 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
     private static TextView tvChooseCityEatWhat;
     private Button btnChooseCityEatWhat;
 
-    public static TabWidget tabWidget;
+    public static TabWidget tabWidgetEatWhat;
     //biến quản lý việc truy vấn
     private static boolean tabStreetQuery = false;
     private static boolean tabTPHCMQuery = false;
@@ -176,11 +167,11 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
         tabNothing.setContent(R.id.tabNothingEatWhat);
         tabHost.addTab(tabNothing);
 
-        tabWidget = tabHost.getTabWidget();
+        tabWidgetEatWhat = tabHost.getTabWidget();
 
-        final TextView tvMoiNhat = (TextView) tabWidget.getChildTabViewAt(0).findViewById(android.R.id.title);
-        final TextView tvDanhMuc = (TextView) tabWidget.getChildTabViewAt(1).findViewById(android.R.id.title);
-        final TextView tvTPHCM = (TextView) tabWidget.getChildTabViewAt(2).findViewById(android.R.id.title);
+        final TextView tvMoiNhat = (TextView) tabWidgetEatWhat.getChildTabViewAt(0).findViewById(android.R.id.title);
+        final TextView tvDanhMuc = (TextView) tabWidgetEatWhat.getChildTabViewAt(1).findViewById(android.R.id.title);
+        final TextView tvTPHCM = (TextView) tabWidgetEatWhat.getChildTabViewAt(2).findViewById(android.R.id.title);
 
         tvMoiNhat.setTextColor(getContext().getResources().getColor(R.color.colorRed));
         tvDanhMuc.setTextColor(getContext().getResources().getColor(R.color.colorPressed));
@@ -190,12 +181,12 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
         tvDanhMuc.setAllCaps(false);
         tvTPHCM.setAllCaps(false);
 
-        tabWidget.getChildAt(3).setVisibility(View.GONE);
-        tabWidget.getChildAt(4).setVisibility(View.GONE);
+        tabWidgetEatWhat.getChildAt(3).setVisibility(View.GONE);
+        tabWidgetEatWhat.getChildAt(4).setVisibility(View.GONE);
 
-        tabWidget.getChildAt(0).setBackgroundResource(R.drawable.background_tabhost_unselected);
-        tabWidget.getChildAt(1).setBackgroundResource(R.drawable.background_tabhost_unselected);
-        tabWidget.getChildAt(2).setBackgroundResource(R.drawable.background_tabhost_unselected);
+        tabWidgetEatWhat.getChildAt(0).setBackgroundResource(R.drawable.background_tabhost_unselected);
+        tabWidgetEatWhat.getChildAt(1).setBackgroundResource(R.drawable.background_tabhost_unselected);
+        tabWidgetEatWhat.getChildAt(2).setBackgroundResource(R.drawable.background_tabhost_unselected);
 
         tabHost.setCurrentTab(3);
 
@@ -230,10 +221,10 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
 
     @Override
     public void onTabChanged(String tabId) {
-        for (int i = 0; i < tabWidget.getChildCount(); i++) {//nếu tab được chọn thì sẽ đổi màu xám ngược lại có màu trắng
-            tabWidget.getChildAt(i).setBackgroundResource(R.drawable.background_tabhost_unselected);
+        for (int i = 0; i < tabWidgetEatWhat.getChildCount(); i++) {//nếu tab được chọn thì sẽ đổi màu xám ngược lại có màu trắng
+            tabWidgetEatWhat.getChildAt(i).setBackgroundResource(R.drawable.background_tabhost_unselected);
         }
-        tabWidget.getChildAt(tabHost.getCurrentTab()).setBackgroundResource(R.drawable.background_tabhost_selected);
+        tabWidgetEatWhat.getChildAt(tabHost.getCurrentTab()).setBackgroundResource(R.drawable.background_tabhost_selected);
     }
 
     //Load thêm dữ liệu
@@ -269,7 +260,7 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
                 newIndexChangedMoiNhatEatWhat = position;
                 categoryAdapter.notifyDataSetChanged();
 
-                final TextView tvMoiNhat = (TextView) tabWidget.getChildTabViewAt(0).findViewById(android.R.id.title);
+                final TextView tvMoiNhat = (TextView) tabWidgetEatWhat.getChildTabViewAt(0).findViewById(android.R.id.title);
                 tvMoiNhat.setText(listCategories.get(position).getName());
                 tvMoiNhat.setTextColor(getContext().getResources().getColor(R.color.colorRed));
 
@@ -296,7 +287,7 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
 
     //Chọn vào đường
     public static void setOnChildEatWhat(Context context, int groupPosition, int childPosition) {
-        final TextView tvTPHCM = (TextView) tabWidget.getChildTabViewAt(2).findViewById(android.R.id.title);
+        final TextView tvTPHCM = (TextView) tabWidgetEatWhat.getChildTabViewAt(2).findViewById(android.R.id.title);
         tvTPHCM.setText(String.valueOf(mData.get(listDistrictEatWhat.get(groupPosition)).get(childPosition).getName()));
         tvTPHCM.setTextColor(context.getResources().getColor(R.color.colorRed));
         tabStreetQuery = true;
@@ -318,7 +309,7 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 newIndexChangedDanhMucEatWhat = position;
                 listByTypeAdapter.notifyDataSetChanged();
-                final TextView tvDanhMuc = (TextView) tabWidget.getChildTabViewAt(1).findViewById(android.R.id.title);
+                final TextView tvDanhMuc = (TextView) tabWidgetEatWhat.getChildTabViewAt(1).findViewById(android.R.id.title);
                 tvDanhMuc.setText(listByTypesEatWhat.get(position).getName());
                 tvDanhMuc.setTextColor(getContext().getResources().getColor(R.color.colorRed));
 
@@ -352,7 +343,7 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
         recycler_list_items_EatWhat.setLayoutManager(layoutManager);
         recycler_list_items_EatWhat.setAdapter(itemEatWhatAdapter);
 
-        itemEatWhatAdapter.notifyDataSetChanged();
+//        itemEatWhatAdapter.notifyDataSetChanged();
 
         loadMore = new LoadMore(layoutManager, this, true);
         recycler_list_items_EatWhat.addOnScrollListener(loadMore);
@@ -360,26 +351,6 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
 
     @Override
     public void loadItemByCategoryandListAndCity(List<Item> items) {
-        for (int i = 0; i < items.size(); i++) {
-            final List<Review> reviews = new ArrayList<>();
-            Call<List<Review>> call = services.getReviewByItemId(items.get(i).getID());
-            call.enqueue(new Callback<List<Review>>() {
-                @Override
-                public void onResponse(Call<List<Review>> call, Response<List<Review>> response) {
-                    if (response.isSuccessful()) {
-                        List<Review> list = response.body();
-                        for (int i = 0; i < list.size(); i++)
-                            reviews.add(list.get(i));
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<List<Review>> call, Throwable t) {
-
-                }
-            });
-            items.get(i).setReviews(reviews);
-        }
         showItem(items);
     }
 
@@ -396,7 +367,10 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
 
     @Override
     public void error() {
-        isError = true;
+        if(itemsEatWhat.isEmpty())
+        {
+            tabHost.setCurrentTab(4);
+        }
     }
 
     //hàm load dữ liệu mới lêns
@@ -417,12 +391,7 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
             recycler_list_items_EatWhat.removeOnScrollListener(loadMore);
             itemController.get_Item_ByCategoryandListAndCity(CategoryIdEatWhat, ListIdEatWhat, CityIdEatWhat, 0);
         }
-        if (isError) {
-            tabHost.setCurrentTab(4);
-            isError = false;
-        } else {
-            tabHost.setCurrentTab(3);
-        }
+        tabHost.setCurrentTab(3);
 
     }
 
@@ -430,7 +399,9 @@ public class fragmentEatWhat extends Fragment implements TabHost.OnTabChangeList
     public static void changeCityEatWhat(Context context, int CityID, String CityName) {
         districtController.get_District(CityID);
 
-        final TextView tvTPHCM = (TextView) tabWidget.getChildTabViewAt(2).findViewById(android.R.id.title);
+        CityIdEatWhat = CityID;
+
+        final TextView tvTPHCM = (TextView) tabWidgetEatWhat.getChildTabViewAt(2).findViewById(android.R.id.title);
         tvTPHCM.setText(CityName);
         tvTPHCM.setTextColor(context.getResources().getColor(R.color.colorPressed));
         tvChooseCityEatWhat.setText(CityName);

@@ -251,6 +251,7 @@ public class fragmentWhere extends Fragment implements TabHost.OnTabChangeListen
     //Chọn vào thành phố mới sẽ load lại tỉnh
     public static void changeCity(Context context, int CityID, String CityName) {
         districtController.get_District(CityID);
+        CityId = CityID;
 
         final TextView tvTPHCM = (TextView) tabWidget.getChildTabViewAt(2).findViewById(android.R.id.title);
         tvTPHCM.setText(CityName);
@@ -375,7 +376,7 @@ public class fragmentWhere extends Fragment implements TabHost.OnTabChangeListen
         recycler_list_items.setLayoutManager(layoutManager);
         recycler_list_items.setAdapter(itemWhereAdapter);
 
-        itemWhereAdapter.notifyDataSetChanged();
+//        itemWhereAdapter.notifyDataSetChanged();
 
         loadMore = new LoadMore(layoutManager, this, false);
         recycler_list_items.addOnScrollListener(loadMore);

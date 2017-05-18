@@ -78,8 +78,8 @@ public class ItemEatWhatAdapter extends RecyclerView.Adapter<ItemEatWhatAdapter.
 //            holder.txtDate.setText(review.get);
 //            int imageResource = context.getResources().getIdentifier("ava" + review.getImage(), "drawable", context.getPackageName());
             if (!review.getImage().equals("")) {
-//                Log.e("URLIMGREVIEW", RetrofitCreate.IMGE_URL + "ava" + review.getName() + ".png");
-                Glide.with(context).load(RetrofitCreate.IMGE_URL + review.getImage()).into(holder.imgAvatarReview);
+                Log.e("URLIMGREVIEW", RetrofitCreate.IMGE_URL + "ava" + review.getImage() + ".png");
+                Glide.with(context).load(RetrofitCreate.IMGE_URL + "ava" + review.getImage() + ".png").into(holder.imgAvatarReview);
             } else {
                 holder.imgAvatarReview.setImageDrawable(null);
             }

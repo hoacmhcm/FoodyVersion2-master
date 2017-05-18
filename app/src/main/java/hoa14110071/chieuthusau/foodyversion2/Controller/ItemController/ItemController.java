@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hoa14110071.chieuthusau.foodyversion2.JavaClass.iLoadData;
-import hoa14110071.chieuthusau.foodyversion2.Model.ModelReview;
 import hoa14110071.chieuthusau.foodyversion2.Object.Item;
 
 import hoa14110071.chieuthusau.foodyversion2.Object.Review;

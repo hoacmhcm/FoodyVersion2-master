@@ -50,7 +50,7 @@ public class LoadMore extends RecyclerView.OnScrollListener {
             Log.e("COUNTITEM", String.valueOf(countItem));
             Log.e("firstVisibleItem", String.valueOf(firstVisibleItem));
             Log.e("visibleThreshold", String.valueOf(visibleThreshold));
-            iLoadMore.loadMore(countItem);
+            iLoadMore.loadMore(countItem+1);
         }
     }
 
