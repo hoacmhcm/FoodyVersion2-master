@@ -61,8 +61,8 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
 
 //        int imageResource = context.getResources().getIdentifier("ava"+review.getImage(), "drawable", context.getPackageName());
         if(!review.getImage().equals("")){
-//            Log.e("URLIMGREVIEW", RetrofitCreate.IMGE_URL + "ava" + review.getName() + ".png");
-            Glide.with(context).load(RetrofitCreate.IMGE_URL  + review.getImage()).into(holder.imgAvatar);
+            Log.e("URLIMGREVIEW", RetrofitCreate.IMGE_URL + "ava" + review.getImage() + ".png");
+            Glide.with(context).load( RetrofitCreate.IMGE_URL + "ava" + review.getImage() + ".png").into(holder.imgAvatar);
         } else {
             holder.imgAvatar.setImageDrawable(null);
         }
