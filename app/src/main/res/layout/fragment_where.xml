@@ -1,0 +1,82 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.fragmentWhere">
+
+
+    <TabHost
+        android:id="@+id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/lineartabhost">
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/background_tabhost" />
+
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/tabMoiNhatWhere"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/fragment_where_moi_nhat" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tabDanhMucWhere"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/fragment_where_danh_muc" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tabTPHCMWhere"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/fragment_where_tphcm" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tabMainWhere"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/fragment_where_main" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tabNothing"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/fragment_nothing" />
+                    </LinearLayout>
+
+
+                </FrameLayout>
+            </LinearLayout>
+    </TabHost>
+
+
+</FrameLayout>

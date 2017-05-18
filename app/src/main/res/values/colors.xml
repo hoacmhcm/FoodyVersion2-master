@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorRed">#CC0000</color>
+    <color name="colorStroke">#454040</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorGray">#EEEEEE</color>
+    <color name="colorGrayButtonWhere">#EAEAEA</color>
+    <color name="colorTextButtonWhere">#959595</color>
+    <color name="colorVietNam">#EFEFEF</color>
+    <color name="colorPressed">#786e6e</color>
+    <color name="colorAvgRating">#03ae03</color>
+    <color name="colorGreen">#77D575</color>
+</resources>

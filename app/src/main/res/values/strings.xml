@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name" translatable="false">FoodyVersion2</string>
+    <string name="plus" translatable="false">+</string>
+    <string name="moinhat" translatable="false">Mới nhất</string>
+    <string name="danhmuc" translatable="false">Danh mục</string>
+    <string name="tphcm" translatable="false">TP.HCM</string>
+    <string name="huy" translatable="false">Hủy</string>
+    <string name="BuiThiNghe" translatable="false">Bùi Thị Nghé</string>
+    <string name="duong" translatable="false">33 đường</string>
+    <string name="doitinhthanh" translatable="false">Đổi tỉnh thành</string>
+    <string name="chontinh_thanhpho" translatable="false">"Chọn Tỉnh/Thành phố</string>
+    <string name="xong" translatable="false">Xong</string>
+    <string name="timnhanh" translatable="false">Tìm nhanh</string>
+    <string name="tudongxacdinhvitri" translatable="false">Tự động xác định vị trí</string>
+    <string name="VietNam" translatable="false">Việt Nam</string>
+    <string name="doiquocgia" translatable="false">Đổi quốc gia</string>
+    <string name="datmuahang" translatable="false">Đặt mua hàng</string>
+    <string name="point" translatable="false">9.2</string>
+    <string name="food" translatable="false">Bánh bía</string>
+    <string name="address" translatable="false">57–69F Đồng Khởi (22-26 Nguyễn Huệ), Quận 1, TP. HCM</string>
+    <string name="isOpen" translatable="false">Đang mở cửa</string>
+    <string name="Ops" translatable="false">Ops!Không có quán ăn nào cả.</string>
+</resources>

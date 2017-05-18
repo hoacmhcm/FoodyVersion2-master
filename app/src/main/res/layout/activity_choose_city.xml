@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="hoa14110071.chieuthusau.foodyversion2.Activity.ChooseCityActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorRed"
+        app:theme="@style/HomeColorToolbar"
+        app:title="@string/chontinh_thanhpho"
+        app:titleTextColor="@color/colorWhite">
+
+        <Button
+            android:id="@+id/btnXongCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@drawable/background_buttonxong"
+            android:text="@string/xong"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <SearchView
+        android:id="@+id/searchTimNhanh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="@string/timnhanh" />
+
+    <View style="@style/Divider" />
+
+
+    <LinearLayout
+        android:id="@+id/linearTuDongXacDinhViTri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_button"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="3"
+            android:text="@string/tudongxacdinhvitri"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_my_location_black_24dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorGray">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="3"
+            android:text="@string/VietNam"
+            android:textColor="@color/colorRed"
+            android:textSize="18sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorGray"
+            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:text="@string/doiquocgia"
+            android:textAllCaps="false"
+            android:textColor="@color/colorStroke" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lstCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
