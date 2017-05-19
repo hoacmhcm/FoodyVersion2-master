@@ -28,7 +28,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/txt_Email"
+                android:id="@+id/txt_email"
                 android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -96,7 +96,7 @@
         android:gravity="center|top">
 
         <Button
-            android:id="@+id/btn_Dangky"
+            android:id="@+id/btn_dangky"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#00000000"
