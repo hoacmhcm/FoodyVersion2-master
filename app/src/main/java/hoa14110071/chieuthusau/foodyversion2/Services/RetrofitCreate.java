@@ -5,8 +5,8 @@ package hoa14110071.chieuthusau.foodyversion2.Services;
  */
 
 public class RetrofitCreate {
-    public static final String BASE_URL = "http://192.168.1.18/foody/api/";
-    public static String IMGE_URL ="http://192.168.1.18/foody/images/";
+    public static final String BASE_URL = "http://192.168.43.2/foody/api/";
+    public static String IMGE_URL ="http://192.168.43.2/foody/images/";
 
     public static Services getService()
     {
