@@ -1,6 +1,7 @@
 package hoa14110071.chieuthusau.foodyversion2.Activity;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
@@ -14,7 +15,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TabHost;
+import android.widget.TabWidget;
 import android.widget.Toast;
 
 import java.io.File;
@@ -26,6 +32,7 @@ import java.util.List;
 
 import hoa14110071.chieuthusau.foodyversion2.Fragment.fragmentEatWhat;
 import hoa14110071.chieuthusau.foodyversion2.Fragment.fragmentWhere;
+import hoa14110071.chieuthusau.foodyversion2.JavaClass.FragmentFooterMenu;
 import hoa14110071.chieuthusau.foodyversion2.Object.Review;
 import hoa14110071.chieuthusau.foodyversion2.R;
 import hoa14110071.chieuthusau.foodyversion2.Services.RetrofitCreate;
@@ -36,6 +43,7 @@ import retrofit2.Response;
 
 import static hoa14110071.chieuthusau.foodyversion2.Fragment.fragmentEatWhat.changeCityEatWhat;
 import static hoa14110071.chieuthusau.foodyversion2.Fragment.fragmentWhere.changeCity;
+import static hoa14110071.chieuthusau.foodyversion2.Fragment.fragmentWhere.tabWidget;
 
 public class HomeActivity extends AppCompatActivity {
     //Tên và đường dẫn database
@@ -51,24 +59,31 @@ public class HomeActivity extends AppCompatActivity {
 
     public static Services services;
 
-
-
-
+    TabWidget tabWidget;
+    FrameLayout mExtraLayout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
+        tabWidget = (TabWidget) getParent().findViewById(android.R.id.tabs);
+
+        mExtraLayout = (FrameLayout) findViewById(R.id.extra_layout);
         //khởi tạo widget
         initControls();
         setupViewPager(viewPager);
         setupTablayout(tabLayout);
+        setSupportActionBar(toolbar);
         //mở database
         openDataBase();
         database = this.openOrCreateDatabase(DATABASE_NAME, Context.MODE_PRIVATE, null);
 
         services = RetrofitCreate.getService();
+
+
     }
 
 
@@ -76,6 +91,7 @@ public class HomeActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
+
     }
 
     //setup cho ViewPager
@@ -131,7 +147,7 @@ public class HomeActivity extends AppCompatActivity {
                 String CityName = (data.getStringExtra("Name"));
                 changeCity(this, CityId, CityName);
             }
-        }else if (requestCode == 2) {
+        } else if (requestCode == 2) {
             if (resultCode == Activity.RESULT_OK) {
                 int CityId = (data.getIntExtra("Id", 1));
                 String CityName = (data.getStringExtra("Name"));
@@ -182,6 +198,22 @@ public class HomeActivity extends AppCompatActivity {
     //Lấy đường dẫn
     private String getPath() {
         return getApplicationInfo().dataDir + DB_PATH_SUFFIX + DATABASE_NAME;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        FragmentFooterMenu bottomSheetDialogFragment = new FragmentFooterMenu();
+        bottomSheetDialogFragment.show(getSupportFragmentManager(), bottomSheetDialogFragment.getTag());
+
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menufooter, menu);
+        return true;
     }
 
 }

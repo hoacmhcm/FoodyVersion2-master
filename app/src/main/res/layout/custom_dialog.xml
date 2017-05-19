@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/custom_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/iteCoupon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="@color/colorWhite"
+            android:drawableLeft="@drawable/drawableiconfootercoupon"
+            android:drawablePadding="10dp"
+            android:paddingLeft="10dp"
+            android:text="Quét mã Coupon"
+            android:textAlignment="textStart" />
+
+        <Button
+            android:id="@+id/itUpImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="@color/colorWhite"
+            android:drawableLeft="@drawable/drawbleiconfooterpic"
+            android:drawablePadding="10dp"
+            android:paddingLeft="10dp"
+            android:text="Đăng ảnh"
+            android:textAlignment="textStart" />
+
+        <Button
+            android:id="@+id/itCheckin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="@color/colorWhite"
+            android:drawableLeft="@drawable/drawableiconfootercoupon"
+            android:drawablePadding="10dp"
+            android:paddingLeft="10dp"
+            android:text="Check-in"
+            android:textAlignment="textStart" />
+
+        <Button
+            android:id="@+id/itCommet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="@color/colorWhite"
+            android:drawableLeft="@drawable/drawableiconfootercomment"
+            android:drawablePadding="10dp"
+            android:paddingLeft="10dp"
+            android:text="Viết bình luận"
+            android:textAlignment="textStart" />
+
+        <Button
+            android:id="@+id/itAddAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="@color/colorWhite"
+            android:drawableLeft="@drawable/drawableiconfooteraddplace"
+            android:drawablePadding="10dp"
+            android:paddingLeft="10dp"
+            android:text="Thêm địa điểm"
+            android:textAlignment="textStart" />
+    </LinearLayout>
+
+
+</LinearLayout>
